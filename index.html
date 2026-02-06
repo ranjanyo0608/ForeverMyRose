@@ -1,1 +1,169 @@
-Initial commit: My rose 🌹
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Riya | My Rose 🌹</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    background: linear-gradient(135deg,#ff9a9e,#fad0c4);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family: Consolas, monospace;
+}
+
+/* Main Card */
+.container{
+    width:92%;
+    max-width:650px;
+    background:#1e1e1e;
+    border-radius:18px;
+    box-shadow:0 0 60px rgba(255,120,150,.6);
+    overflow:hidden;
+}
+
+/* Name Header */
+.name-header{
+    text-align:center;
+    padding:20px;
+    font-size:38px;
+    font-weight:bold;
+    color:#ff5f7e;
+    background:#111;
+    letter-spacing:2px;
+}
+
+/* Code Area */
+.code{
+    padding:25px;
+    color:#d4d4d4;
+    font-size:15px;
+    line-height:1.7;
+    min-height:230px;
+    white-space:pre-line;
+}
+
+.keyword{color:#569cd6}
+.string{color:#ce9178}
+.name{color:#ff7eb3;font-weight:bold}
+
+/* Rose */
+.rose{
+    text-align:center;
+    font-size:55px;
+    animation:bloom 2s infinite;
+    display:none;
+}
+@keyframes bloom{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.25)}
+}
+
+/* Buttons */
+.buttons{
+    text-align:center;
+    padding:15px;
+    display:none;
+}
+button{
+    padding:12px 26px;
+    border:none;
+    border-radius:25px;
+    margin:8px;
+    cursor:pointer;
+    font-family:inherit;
+    font-size:14px;
+}
+.yes{
+    background:#ff5f7e;
+    color:white;
+}
+
+/* Final Message */
+.final{
+    text-align:center;
+    padding:25px;
+    color:#ffb3c6;
+    font-size:18px;
+    display:none;
+    line-height:1.6;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- NAME AT TOP -->
+    <div class="name-header">
+        RIYA ❤️
+    </div>
+
+    <!-- CODE TEXT -->
+    <div id="code" class="code"></div>
+
+    <!-- ROSE -->
+    <div id="rose" class="rose">🌹</div>
+
+    <!-- BUTTON -->
+    <div id="buttons" class="buttons">
+        <button class="yes" onclick="accept()">Accept My Rose 🌹</button>
+    </div>
+
+    <!-- FINAL TEXT -->
+    <div id="final" class="final">
+        <strong>Riya</strong>,<br><br>
+        Among a garden full of roses,<br>
+        you’re the one my heart chose —<br>
+        <strong>my wifey</strong> ❤️🌹
+    </div>
+
+</div>
+
+<script>
+const text =
+`<span class="keyword">class</span> Love {
+
+    <span class="keyword">public static void</span> main(String[] args) {
+
+        String rose = "<span class='name'>Riya</span>";
+
+        System.out.println("Happy Rose Day 🌹");
+
+        // In a world full of bugs,
+        // you are my perfect logic.
+
+        // This code has only one purpose:
+        // To tell you — you are MY Rose.
+
+    }
+}`;
+
+let i=0;
+const speed=35;
+const codeDiv=document.getElementById("code");
+
+function type(){
+    if(i<text.length){
+        codeDiv.innerHTML+=text.charAt(i);
+        i++;
+        setTimeout(type,speed);
+    }else{
+        document.getElementById("rose").style.display="block";
+        document.getElementById("buttons").style.display="block";
+    }
+}
+type();
+
+function accept(){
+    document.getElementById("buttons").style.display="none";
+    document.getElementById("final").style.display="block";
+}
+</script>
+
+</body>
+</html>
