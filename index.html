@@ -5,163 +5,217 @@
 <title>Riya | My Rose 🌹</title>
 
 <style>
-body{
+/* RESET */
+*{
     margin:0;
-    height:100vh;
-    background: linear-gradient(135deg,#ff9a9e,#fad0c4);
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* BODY */
+body{
+    min-height:100vh;
+    background: linear-gradient(135deg,#ff758c,#ff7eb3);
     display:flex;
     justify-content:center;
     align-items:center;
-    font-family: Consolas, monospace;
+    font-family: 'Segoe UI', sans-serif;
 }
 
-/* Main Card */
-.container{
-    width:92%;
-    max-width:650px;
-    background:#1e1e1e;
-    border-radius:18px;
-    box-shadow:0 0 60px rgba(255,120,150,.6);
+/* MAIN APP */
+.app{
+    width:95%;
+    max-width:900px;
+    background:#0f0f0f;
+    border-radius:20px;
     overflow:hidden;
+    box-shadow:0 0 80px rgba(0,0,0,.4);
 }
 
-/* Name Header */
-.name-header{
+/* HERO */
+.hero{
+    background: linear-gradient(135deg,#ff4d6d,#ff758f);
+    padding:30px;
     text-align:center;
-    padding:20px;
-    font-size:38px;
-    font-weight:bold;
-    color:#ff5f7e;
-    background:#111;
-    letter-spacing:2px;
+    color:white;
+}
+.hero h1{
+    font-size:46px;
+    letter-spacing:4px;
+    font-weight:800;
+}
+.hero p{
+    margin-top:8px;
+    font-size:16px;
+    opacity:.9;
 }
 
-/* Code Area */
-.code{
+/* CONTENT GRID */
+.content{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
     padding:25px;
-    color:#d4d4d4;
-    font-size:15px;
-    line-height:1.7;
-    min-height:230px;
+}
+
+/* CARD */
+.card{
+    background:#1a1a1a;
+    border-radius:16px;
+    padding:20px;
+    color:#ddd;
+    min-height:260px;
+}
+
+/* TERMINAL */
+.terminal{
+    background:#000;
+    border-radius:12px;
+    padding:15px;
+    font-family: Consolas, monospace;
+    font-size:14px;
+    color:#00ff9c;
+    min-height:220px;
     white-space:pre-line;
 }
 
-.keyword{color:#569cd6}
-.string{color:#ce9178}
-.name{color:#ff7eb3;font-weight:bold}
-
-/* Rose */
+/* ROSE */
 .rose{
+    font-size:70px;
     text-align:center;
-    font-size:55px;
+    margin-top:15px;
     animation:bloom 2s infinite;
     display:none;
 }
 @keyframes bloom{
     0%,100%{transform:scale(1)}
-    50%{transform:scale(1.25)}
+    50%{transform:scale(1.2)}
 }
 
-/* Buttons */
-.buttons{
+/* BUTTON */
+.actions{
     text-align:center;
-    padding:15px;
+    margin-top:20px;
     display:none;
 }
 button{
-    padding:12px 26px;
+    padding:12px 30px;
     border:none;
-    border-radius:25px;
-    margin:8px;
-    cursor:pointer;
-    font-family:inherit;
-    font-size:14px;
-}
-.yes{
-    background:#ff5f7e;
+    border-radius:30px;
+    background:#ff4d6d;
     color:white;
+    font-size:15px;
+    cursor:pointer;
+    transition:.3s;
+}
+button:hover{
+    transform:scale(1.05);
 }
 
-/* Final Message */
+/* FINAL MESSAGE */
 .final{
-    text-align:center;
-    padding:25px;
-    color:#ffb3c6;
-    font-size:18px;
     display:none;
+    padding:30px;
+    text-align:center;
+    color:#ffb3c6;
+    font-size:20px;
     line-height:1.6;
+}
+.final strong{
+    color:#fff;
+    font-size:22px;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .content{
+        grid-template-columns:1fr;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="app">
 
-    <!-- NAME AT TOP -->
-    <div class="name-header">
-        RIYA ❤️
+    <!-- HERO -->
+    <div class="hero">
+        <h1>RIYA ❤️</h1>
+        <p>Rose Day Special | Built with Logic & Love</p>
     </div>
 
-    <!-- CODE TEXT -->
-    <div id="code" class="code"></div>
+    <!-- CONTENT -->
+    <div class="content">
 
-    <!-- ROSE -->
-    <div id="rose" class="rose">🌹</div>
+        <!-- LEFT CARD -->
+        <div class="card">
+            <h3>💻 Program Logic</h3>
+            <div id="terminal" class="terminal"></div>
+        </div>
 
-    <!-- BUTTON -->
-    <div id="buttons" class="buttons">
-        <button class="yes" onclick="accept()">Accept My Rose 🌹</button>
+        <!-- RIGHT CARD -->
+        <div class="card">
+            <h3>🌹 Emotional Output</h3>
+            <div id="rose" class="rose">🌹</div>
+            <div id="actions" class="actions">
+                <button onclick="acceptRose()">Accept My Rose</button>
+            </div>
+        </div>
+
     </div>
 
-    <!-- FINAL TEXT -->
+    <!-- FINAL -->
     <div id="final" class="final">
         <strong>Riya</strong>,<br><br>
         Among a garden full of roses,<br>
         you’re the one my heart chose —<br>
-        <strong>my wifey</strong> ❤️🌹
+        <strong>my wifey</strong> 🌹❤️
     </div>
 
 </div>
 
 <script>
-const text =
-`<span class="keyword">class</span> Love {
+/* TERMINAL TEXT */
+const terminalText = 
+`Initializing LoveProgram...
+Checking compatibility...
+Status: PERFECT MATCH ❤️
 
-    <span class="keyword">public static void</span> main(String[] args) {
+class Love {
+    public static void main(String[] args) {
 
-        String rose = "<span class='name'>Riya</span>";
-
-        System.out.println("Happy Rose Day 🌹");
+        String rose = "Riya";
 
         // In a world full of bugs,
-        // you are my perfect logic.
+        // you are my cleanest logic.
 
-        // This code has only one purpose:
-        // To tell you — you are MY Rose.
-
+        // Output:
+        // You are MY Rose 🌹
     }
 }`;
 
-let i=0;
-const speed=35;
-const codeDiv=document.getElementById("code");
+let i = 0;
+const speed = 30;
+const terminal = document.getElementById("terminal");
 
-function type(){
-    if(i<text.length){
-        codeDiv.innerHTML+=text.charAt(i);
+function typeTerminal(){
+    if(i < terminalText.length){
+        terminal.innerHTML += terminalText.charAt(i);
         i++;
-        setTimeout(type,speed);
-    }else{
-        document.getElementById("rose").style.display="block";
-        document.getElementById("buttons").style.display="block";
+        setTimeout(typeTerminal, speed);
+    } else {
+        document.getElementById("rose").style.display = "block";
+        document.getElementById("actions").style.display = "block";
     }
 }
-type();
 
-function accept(){
-    document.getElementById("buttons").style.display="none";
-    document.getElementById("final").style.display="block";
+typeTerminal();
+
+/* ACCEPT LOGIC */
+function acceptRose(){
+    document.getElementById("final").style.display = "block";
+    document.getElementById("actions").style.display = "none";
 }
 </script>
 
