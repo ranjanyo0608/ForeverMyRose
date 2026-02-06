@@ -2,135 +2,126 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Riya | My Rose 🌹</title>
+<title>Riya | LoveCompiler 🌹</title>
 
 <style>
-/* RESET */
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
-/* BODY */
 body{
-    min-height:100vh;
-    background: linear-gradient(135deg,#ff758c,#ff7eb3);
+    background:#0b0f1a;
+    font-family: Consolas, monospace;
+    color:#e6e6e6;
     display:flex;
     justify-content:center;
     align-items:center;
-    font-family: 'Segoe UI', sans-serif;
+    min-height:100vh;
 }
 
-/* MAIN APP */
+/* APP */
 .app{
     width:95%;
-    max-width:900px;
-    background:#0f0f0f;
-    border-radius:20px;
+    max-width:1000px;
+    background:#111827;
+    border-radius:16px;
     overflow:hidden;
-    box-shadow:0 0 80px rgba(0,0,0,.4);
+    box-shadow:0 0 80px rgba(255,90,120,.4);
 }
 
-/* HERO */
-.hero{
-    background: linear-gradient(135deg,#ff4d6d,#ff758f);
-    padding:30px;
+/* HEADER */
+.header{
+    background:linear-gradient(135deg,#ff4d6d,#ff7eb3);
+    padding:22px;
     text-align:center;
-    color:white;
 }
-.hero h1{
-    font-size:46px;
+.header h1{
+    font-size:42px;
     letter-spacing:4px;
     font-weight:800;
 }
-.hero p{
-    margin-top:8px;
-    font-size:16px;
-    opacity:.9;
+.header p{
+    opacity:.95;
+    margin-top:6px;
 }
 
-/* CONTENT GRID */
-.content{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
-    padding:25px;
+/* TABS */
+.tabs{
+    display:flex;
+    background:#1f2933;
+}
+.tab{
+    flex:1;
+    padding:14px;
+    text-align:center;
+    cursor:pointer;
+    border-bottom:3px solid transparent;
+}
+.tab.active{
+    border-bottom:3px solid #ff7eb3;
+    background:#111827;
 }
 
-/* CARD */
-.card{
-    background:#1a1a1a;
-    border-radius:16px;
-    padding:20px;
-    color:#ddd;
+/* PANELS */
+.panel{
+    display:none;
+    padding:22px;
+}
+.panel.active{
+    display:block;
+}
+
+/* CODE EDITOR */
+.editor{
+    background:#020617;
+    border-radius:12px;
+    padding:16px;
     min-height:260px;
+    white-space:pre-line;
+    color:#9effc3;
 }
 
-/* TERMINAL */
-.terminal{
+/* BUTTON */
+.run{
+    margin-top:16px;
+    padding:10px 26px;
+    background:#ff4d6d;
+    border:none;
+    border-radius:20px;
+    color:white;
+    cursor:pointer;
+}
+
+/* CONSOLE */
+.console{
     background:#000;
     border-radius:12px;
-    padding:15px;
-    font-family: Consolas, monospace;
-    font-size:14px;
+    padding:16px;
+    min-height:200px;
     color:#00ff9c;
-    min-height:220px;
     white-space:pre-line;
 }
 
 /* ROSE */
 .rose{
-    font-size:70px;
+    font-size:80px;
     text-align:center;
-    margin-top:15px;
+    margin-top:20px;
     animation:bloom 2s infinite;
-    display:none;
 }
 @keyframes bloom{
     0%,100%{transform:scale(1)}
-    50%{transform:scale(1.2)}
+    50%{transform:scale(1.25)}
 }
 
-/* BUTTON */
-.actions{
-    text-align:center;
-    margin-top:20px;
-    display:none;
-}
-button{
-    padding:12px 30px;
-    border:none;
-    border-radius:30px;
-    background:#ff4d6d;
-    color:white;
-    font-size:15px;
-    cursor:pointer;
-    transition:.3s;
-}
-button:hover{
-    transform:scale(1.05);
-}
-
-/* FINAL MESSAGE */
+/* FINAL */
 .final{
-    display:none;
-    padding:30px;
     text-align:center;
-    color:#ffb3c6;
-    font-size:20px;
+    font-size:22px;
     line-height:1.6;
+    color:#ffb3c6;
 }
 .final strong{
-    color:#fff;
-    font-size:22px;
-}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-    .content{
-        grid-template-columns:1fr;
-    }
+    color:white;
+    font-size:24px;
 }
 </style>
 </head>
@@ -139,85 +130,97 @@ button:hover{
 
 <div class="app">
 
-    <!-- HERO -->
-    <div class="hero">
+    <!-- HEADER -->
+    <div class="header">
         <h1>RIYA ❤️</h1>
-        <p>Rose Day Special | Built with Logic & Love</p>
+        <p>LoveCompiler v1.0 | Rose Day Build</p>
     </div>
 
-    <!-- CONTENT -->
-    <div class="content">
+    <!-- TABS -->
+    <div class="tabs">
+        <div class="tab active" onclick="openTab(0)">Source Code</div>
+        <div class="tab" onclick="openTab(1)">Run Program</div>
+        <div class="tab" onclick="openTab(2)">Final Output</div>
+    </div>
 
-        <!-- LEFT CARD -->
-        <div class="card">
-            <h3>💻 Program Logic</h3>
-            <div id="terminal" class="terminal"></div>
+    <!-- SOURCE -->
+    <div class="panel active">
+        <div class="editor">
+class LoveProgram {
+
+    public static void main(String[] args) {
+
+        String rose = "Riya";
+
+        if(rose.equals("Riya")){
+            System.out.println("Perfect match detected ❤️");
+        }
+
+        // In a garden full of roses,
+        // you are the one my heart chose.
+
+    }
+}
         </div>
+        <button class="run" onclick="runCode()">▶ Compile & Run</button>
+    </div>
 
-        <!-- RIGHT CARD -->
-        <div class="card">
-            <h3>🌹 Emotional Output</h3>
-            <div id="rose" class="rose">🌹</div>
-            <div id="actions" class="actions">
-                <button onclick="acceptRose()">Accept My Rose</button>
-            </div>
+    <!-- RUN -->
+    <div class="panel">
+        <div id="console" class="console">
+Waiting for execution...
         </div>
-
     </div>
 
     <!-- FINAL -->
-    <div id="final" class="final">
-        <strong>Riya</strong>,<br><br>
-        Among a garden full of roses,<br>
-        you’re the one my heart chose —<br>
-        <strong>my wifey</strong> 🌹❤️
+    <div class="panel">
+        <div class="final">
+            <div class="rose">🌹</div>
+            <strong>Riya</strong>,<br><br>
+            Among a garden full of roses,<br>
+            you’re the one my heart chose —<br>
+            <strong>my wifey</strong> ❤️
+        </div>
     </div>
 
 </div>
 
 <script>
-/* TERMINAL TEXT */
-const terminalText = 
-`Initializing LoveProgram...
-Checking compatibility...
-Status: PERFECT MATCH ❤️
+let tabs=document.querySelectorAll(".tab");
+let panels=document.querySelectorAll(".panel");
 
-class Love {
-    public static void main(String[] args) {
-
-        String rose = "Riya";
-
-        // In a world full of bugs,
-        // you are my cleanest logic.
-
-        // Output:
-        // You are MY Rose 🌹
-    }
-}`;
-
-let i = 0;
-const speed = 30;
-const terminal = document.getElementById("terminal");
-
-function typeTerminal(){
-    if(i < terminalText.length){
-        terminal.innerHTML += terminalText.charAt(i);
-        i++;
-        setTimeout(typeTerminal, speed);
-    } else {
-        document.getElementById("rose").style.display = "block";
-        document.getElementById("actions").style.display = "block";
-    }
+function openTab(i){
+    tabs.forEach(t=>t.classList.remove("active"));
+    panels.forEach(p=>p.classList.remove("active"));
+    tabs[i].classList.add("active");
+    panels[i].classList.add("active");
 }
 
-typeTerminal();
-
-/* ACCEPT LOGIC */
-function acceptRose(){
-    document.getElementById("final").style.display = "block";
-    document.getElementById("actions").style.display = "none";
+function runCode(){
+    openTab(1);
+    const consoleBox=document.getElementById("console");
+    consoleBox.innerHTML="";
+    const logs=[
+        "Compiling LoveProgram.java...",
+        "No errors found ✔",
+        "Running program...",
+        "",
+        "Output:",
+        "Perfect match detected ❤️",
+        "Rose assigned successfully 🌹"
+    ];
+    let i=0;
+    let interval=setInterval(()=>{
+        consoleBox.innerHTML+=logs[i]+"\n";
+        i++;
+        if(i===logs.length){
+            clearInterval(interval);
+            setTimeout(()=>openTab(2),1200);
+        }
+    },500);
 }
 </script>
 
 </body>
-</html>
+</html>            
+        
